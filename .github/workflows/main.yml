@@ -1,8 +1,8 @@
 name: main
 on:
   schedule:
-    - cron: '0 * * * *'
-  
+    - cron: "0 * * * *"
+
   workflow_dispatch:
 
 jobs:
@@ -19,7 +19,7 @@ jobs:
       - name: Setup PHP with PECL extension
         uses: shivammathur/setup-php@v2
         with:
-           php-version: '8.1'
+          php-version: "8.1"
 
       - name: run
         run: php example.php > price.json
