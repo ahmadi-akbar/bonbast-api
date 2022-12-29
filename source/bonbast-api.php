@@ -18,52 +18,51 @@ class BonBast
    * Before returning it.
    */
   private $map = [
-    // Currency name, Sell key, Buy key
-    ["US Dollar", "usd1", "usd2"],
-    ["Euro", "eur1", "eur2"],
-    ["British Pound", "gbp1", "gbp2"],
-    ["Swiss Franc", "chf1", "chf2"],
-    ["Canadian Dollar", "cad1", "cad2"],
-    ["Australian Dollar", "aud1", "aud2"],
-    ["Swedish Krona", "sek1", "sek2"],
-    ["Norwegian Krone", "nok1", "nok2"],
-    ["Russian Ruble", "rub1", "rub2"],
-    ["Thai Baht", "thb1", "thb2"],
-    ["Singapore Dollar", "sgd1", "sgd2"],
-    ["Hong Kong Dollar", "hkd1", "hkd2"],
-    ["Azerbaijani Manat", "azn1", "azn2"],
-    ["Armenian Dram", "amd1", "amd2"],
-    ["Danish Krone", "dkk1", "dkk2"],
-    ["UAE Dirham", "aed1", "aed2"],
-    ["Japanese Yen", "jpy1", "jpy2"],
-    ["Turkish Lira", "try1", "try2"],
-    ["Chinese Yuan", "cny1", "cny2"],
-    ["KSA Riyal", "sar1", "sar2"],
-    ["Indian Rupee", "inr1", "inr2"],
-    ["Ringgit", "myr1", "myr2"],
-    ["Afghan Afghani", "afn1", "afn2"],
-    ["Kuwaiti Dinar", "kwd1", "kwd2"],
-    ["Iraqi Dinar", "iqd1", "iqd2"],
-    ["Bahraini Dinar", "bhd1", "bhd2"],
-    ["Omani Rial", "omr1", "omr2"],
-    ["Qatari Riyal", "qar1", "qar2"],
+    // Currency name, symbol, Sell key, Buy key
+    ["US Dollar", "usd" , "usd1", "usd2"],
+    ["Euro", "eur", "eur1", "eur2"],
+    ["British Pound", "gbp", "gbp1", "gbp2"],
+    ["Swiss Franc", "chf" , "chf1", "chf2"],
+    ["Canadian Dollar", "cad" , "cad1", "cad2"],
+    ["Australian Dollar", "aud", "aud1", "aud2"],
+    ["Swedish Krona", "sek", "sek1", "sek2"],
+    ["Norwegian Krone", "nok", "nok1", "nok2"],
+    ["Russian Ruble", "rub", "rub1", "rub2"],
+    ["Thai Baht", "thb", "thb1", "thb2"],
+    ["Singapore Dollar", "sgd", "sgd1", "sgd2"],
+    ["Hong Kong Dollar", "hkd", "hkd1", "hkd2"],
+    ["Azerbaijani Manat", "azn", "azn1", "azn2"],
+    ["Armenian Dram", "amd", "amd1", "amd2"],
+    ["Danish Krone", "dkk", "dkk1", "dkk2"],
+    ["UAE Dirham", "aed", "aed1", "aed2"],
+    ["Japanese Yen", "jpy", "jpy1", "jpy2"],
+    ["Turkish Lira", "try", "try1", "try2"],
+    ["Chinese Yuan", "cny", "cny1", "cny2"],
+    ["KSA Riyal", "sar", "sar1", "sar2"],
+    ["Indian Rupee", "inr", "inr1", "inr2"],
+    ["Ringgit", "myr", "myr1", "myr2"],
+    ["Afghan Afghani", "afn", "afn1", "afn2"],
+    ["Kuwaiti Dinar", "kwd", "kwd1", "kwd2"],
+    ["Iraqi Dinar", "iqd", "iqd1", "iqd2"],
+    ["Bahraini Dinar", "bhd", "bhd1", "bhd2"],
+    ["Omani Rial", "omr", "omr1", "omr2"],
+    ["Qatari Riyal", "qar", "qar1", "qar2"],
 
     // Coin name, Sell key, Buy key.
-    ["Azadi", "azadi1", "azadi12"],
-    ["Emami", "emami1", "emami12"],
-    ["½ Azadi", "azadi1_2", "azadi1_22"],
-    ["¼ Azadi", "azadi1_4", "azadi1_42"],
-    ["Gerami", "azadi1g", "azadi1g2"],
+    ["Azadi", "azadi", "azadi1", "azadi12"],
+    ["Emami", "emami", "emami1", "emami12"],
+    ["½ Azadi", "azadi1_2", "azadi1_2", "azadi1_22"],
+    ["¼ Azadi", "azadi1_4", "azadi1_4", "azadi1_42"],
+    ["Gerami", "azadi1g", "azadi1g", "azadi1g2"],
 
     // Gold name, Sell key
-    ["Gold Gram", "gol18"],
-    ["Gold Mithqal", "mithqal"],
-    ["Gold Ounce", "ounce"],
+    ["Gold Gram", "gol18", "gol18"],
+    ["Gold Mithqal", "", "mithqal"],
+    ["Gold Ounce", "ounce", "ounce"],
 
     // Digital currency name, Sell key
-    ["Bitcoin", "bitcoin"],
+    ["Bitcoin", "btc", "bitcoin"],
   ];
-
   function fetchPrices()
   {
     $homepage = $this->requestFetchHomePage();
@@ -166,16 +165,17 @@ class BonBast
     $prices = [];
 
     for ($i = 0; $i < count($this->map); $i++) {
-      $name = $this->map[$i][0];
-      $sell_key = $this->map[$i][1];
-      $prices[$name] = [
+      $id = $this->map[$i][1];
+      $sell_key = $this->map[$i][2];
+      $prices[$id] = [
+        "name" =>  $this->map[$i][0],
         "sell" => $json_object[$sell_key],
       ];
 
       // Check if this price name, has the "buy" field in map variable
-      if (isset($this->map[$i][2])) {
-        $buy_key = $this->map[$i][2];
-        $prices[$name]["buy"] = $json_object[$buy_key];
+      if (isset($this->map[$i][3])) {
+        $buy_key = $this->map[$i][3];
+        $prices[$id]["buy"] = $json_object[$buy_key];
       } else {
         // This currency doesn't have "buy" key,
         // Uncomment the line below to set default 0 value
