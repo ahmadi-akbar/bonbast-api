@@ -49,19 +49,19 @@ class BonBast
     ["Qatari Riyal", "qar", "qar1", "qar2"],
 
     // Coin name, Sell key, Buy key.
-    ["Azadi", "azadi", "azadi1", "azadi12"],
-    ["Emami", "emami", "emami1", "emami12"],
-    ["½ Azadi", "azadi1_2", "azadi1_2", "azadi1_22"],
-    ["¼ Azadi", "azadi1_4", "azadi1_4", "azadi1_42"],
-    ["Gerami", "azadi1g", "azadi1g", "azadi1g2"],
+    // ["Azadi", "azadi", "azadi1", "azadi12"],
+    // ["Emami", "emami", "emami1", "emami12"],
+    // ["½ Azadi", "azadi1_2", "azadi1_2", "azadi1_22"],
+    // ["¼ Azadi", "azadi1_4", "azadi1_4", "azadi1_42"],
+    // ["Gerami", "azadi1g", "azadi1g", "azadi1g2"],
 
     // Gold name, Sell key
     ["Gold Gram", "gol18", "gol18"],
-    ["Gold Mithqal", "", "mithqal"],
+    ["Gold Mithqal", "mithqal", "mithqal"],
     ["Gold Ounce", "ounce", "ounce"],
 
     // Digital currency name, Sell key
-    ["Bitcoin", "btc", "bitcoin"],
+    // ["Bitcoin", "btc", "bitcoin"],
   ];
   function fetchPrices()
   {
