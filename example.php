@@ -1,6 +1,6 @@
 <?php
 // Max Base
-// https://github.com/BaseMax/bonbast-api
+// https://github.com/ahmadi-akbar/bonbast-api
 require_once "source/bonbast-api.php";
 
 try {

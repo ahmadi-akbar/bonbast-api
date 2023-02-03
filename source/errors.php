@@ -14,7 +14,7 @@ class InvalidHTTPStatusException extends Exception {
 
 class BadHomepageDataException extends Exception {
   protected $message = "The bonbast.com website returned unsupported homepage response"
-    . PHP_EOL . "Please fill an issue in https://github.com/BaseMax/bonbast-api/issues/new";
+    . PHP_EOL . "Please fill an issue in https://github.com/ahmadi-akbar/bonbast-api/issues/new";
   protected $code = 500;
 }
 
