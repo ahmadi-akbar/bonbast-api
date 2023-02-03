@@ -1,7 +1,7 @@
 <?php
 /*
  * @Name: bonbast-api
- * @Author: Max Base
+ * @Author: Akbar Ahmadi
  * @Repository: https://github.com/ahmadi-akbar/bonbast-api
  * @Date: Jul 15, 2020, 2020-08-07, 2021-08-01, 2021-08-02, 2021-08-10, 2023-02-03
  */

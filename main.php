@@ -1,5 +1,5 @@
 <?php
-// Max Base
+// Akbar Ahmadi
 // https://github.com/ahmadi-akbar/bonbast-api
 require_once "source/bonbast-api.php";
 
