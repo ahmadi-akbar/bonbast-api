@@ -9,6 +9,7 @@ require_once "errors.php";
 
 class BonBast
 {
+  private $tryCount = 0;
   private $baseURI = "https://www.bonbast.com";
 
   private $user_agent = "Mozilla/5.0 (iPhone; CPU iPhone OS 11_8_4; like Mac OS X) AppleWebKit/603.24 (KHTML, like Gecko)  Chrome/50.0.2752.202 Mobile Safari/535.8";
@@ -65,6 +66,7 @@ class BonBast
   ];
   function fetchPrices()
   {
+    $this->tryCount += 1;
     $homepage = $this->requestFetchHomePage();
     $key = $this->extractKeyFromHomePage($homepage);
     $json_object = $this->requestFetchPrices($key);
@@ -194,7 +196,8 @@ class BonBast
     if (!in_array($code, [200, 201])) {
       switch ($code) {
         case 403:
-          throw new IPAddressBlockedException();
+          if($this->tryCount < 2) $this->fetchPrices();
+          else throw new IPAddressBlockedException();
 
         default:
           throw new InvalidHTTPStatusException($code);
