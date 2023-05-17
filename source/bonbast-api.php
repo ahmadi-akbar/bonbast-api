@@ -11,7 +11,7 @@ class BonBast
 {
   private $baseURI = "https://www.bonbast.com";
 
-  private $user_agent = "Mozilla/5.0(Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36(KHTML,like Gecko) curlrome/68.0.3440.106 Mobile Safari/537.36";
+  private $user_agent = "Mozilla/5.0 (iPhone; CPU iPhone OS 11_8_4; like Mac OS X) AppleWebKit/603.24 (KHTML, like Gecko)  Chrome/50.0.2752.202 Mobile Safari/535.8";
 
   /**
    * How the response structure should be mapped
@@ -129,10 +129,13 @@ class BonBast
       CURLOPT_TIMEOUT => 0,
       CURLOPT_POSTFIELDS => "data=" . $key . "&webdriver=false",
       CURLOPT_HTTPHEADER => [
-        "user-agent: " . $this->user_agent,
-        "content-type: application/x-www-form-urlencoded; charset=UTF-8",
-        "referer: " . $this->baseURI . "/",
-        "Cookie: st_bb=0",
+        "Accept: application/json, text/javascript, */*; q=0.01",
+        "User-Agent: " . $this->user_agent,
+        "Content-Type: application/x-www-form-urlencoded; charset=UTF-8",
+        "Origin: " . $this->baseURI,
+        "Referer: " . $this->baseURI . "/",
+        "Cookie: st_bb=0; cookieconsent_status=true",
+        "X-Requested-With: XMLHttpRequest",
       ],
     ]);
     $response = curl_exec($curl);
