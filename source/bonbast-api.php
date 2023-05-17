@@ -10,7 +10,7 @@ require_once "errors.php";
 class BonBast
 {
   private $tryCount = 0;
-  private $baseURI = "https://www.bonbast.com";
+  private $baseURI = "https://bonbast.com";
 
   private $user_agent = "Mozilla/5.0 (iPhone; CPU iPhone OS 11_8_4; like Mac OS X) AppleWebKit/603.24 (KHTML, like Gecko)  Chrome/50.0.2752.202 Mobile Safari/535.8";
 
